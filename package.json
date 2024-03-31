@@ -1,0 +1,24 @@
+{
+  "name": "bdd-test-soln-ts",
+  "version": "1.0.0",
+  "description": "TypeScript solution for Test Automation",
+  "main": "",
+  "scripts": {
+    "test": "mocha"
+  },
+  "type": "module",
+  "keywords": ["Automation solution", "BDD Test", "API"],
+  "author": "Nikhil Kumar",
+  "license": "ISC",
+  "dependencies": {
+    "@hyperjump/json-schema": "^1.7.3",
+    "axios": "^1.6.8",
+    "chai": "^5.1.0",
+    "mocha": "^10.3.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.14",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.11.30"
+  }
+}
