@@ -2,9 +2,9 @@
   "name": "bdd-test-soln-ts",
   "version": "1.0.0",
   "description": "TypeScript solution for Test Automation",
-  "main": "",
+  "exports": "./index.ts",
   "scripts": {
-    "test": "mocha",
+    "test": "mocha -u bdd --colors dist/test/smartphone.spec.js",
     "lint": "eslint src test --ext .ts"
   },
   "type": "module",
@@ -28,6 +28,7 @@
     "@types/node": "^20.11.30",
     "@typescript-eslint/eslint-plugin": "^7.4.0",
     "@typescript-eslint/parser": "^7.4.0",
-    "eslint": "^8.57.0"
+    "eslint": "^8.57.0",
+    "ts-node": "^10.9.2"
   }
 }

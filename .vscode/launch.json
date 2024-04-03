@@ -6,6 +6,27 @@
     "configurations": [
         {
             "args": [
+                "--require",
+                "ts-node/register",
+                "-u", "bdd",
+                "--colors",
+                "--no-timeout",
+                "--recursive",
+                "${workspaceRoot}/test/**/*.spec.ts"
+            ],
+            "env": {
+                "NODE_OPTIONS": "--loader ts-node/esm"
+            },
+            "name": "TS Mocha Tests",
+            "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "args": [
                 "-u",
                 "bdd",
                 "--timeout",
@@ -13,7 +34,7 @@
                 "--colors",
                 "**/${fileBasenameNoExtension}.js"
             ],
-            "name": "Mocha Tests",
+            "name": "JS Mocha Tests",
             "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
             "request": "launch",
             "skipFiles": [
