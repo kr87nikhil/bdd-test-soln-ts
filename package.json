@@ -4,8 +4,9 @@
   "description": "TypeScript solution for Test Automation",
   "exports": "./index.ts",
   "scripts": {
-    "test": "mocha -u bdd --colors dist/test/smartphone.spec.js",
-    "lint": "eslint src test --ext .ts"
+    "lint": "eslint src test --ext .ts",
+    "test": "mocha -u bdd --colors --reporter mochawesome --reporter-options html=false dist/test/smartphone.spec.js",
+    "report": "marge -f [datetime]-[name]-report --timestamp mediumDate --charts true --no-code mochawesome-report/*.json"
   },
   "type": "module",
   "keywords": [
@@ -20,11 +21,14 @@
     "axios": "^1.6.8",
     "chai": "^5.1.0",
     "dotenv": "^16.4.5",
-    "mocha": "^10.3.0"
+    "mocha": "^10.3.0",
+    "mochawesome": "^7.1.3",
+    "mochawesome-report-generator": "^6.2.0"
   },
   "devDependencies": {
     "@types/chai": "^4.3.14",
     "@types/mocha": "^10.0.6",
+    "@types/mochawesome": "^6.2.4",
     "@types/node": "^20.11.30",
     "@typescript-eslint/eslint-plugin": "^7.4.0",
     "@typescript-eslint/parser": "^7.4.0",
