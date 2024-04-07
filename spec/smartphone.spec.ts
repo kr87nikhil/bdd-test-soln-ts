@@ -10,6 +10,7 @@ import type { ProductType } from '../src/product.js'
 should()
 // config({ path: `./config/.env.${process.env.NODE_ENV || 'integ'}` })
 import config from '../config.js'
+import logger from '../logger.js'
 import sampleProducts from '../src/fixtures/products.json' with { type: 'json' }
 
 
@@ -76,7 +77,7 @@ describe('User details - Profile check via Token', function () {
                 }
                 axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`
             }).catch(error => {
-                console.error(`Unable to refresh token: ${error}`)
+                logger.error(`Unable to refresh token: ${error}`)
             })
             return new Promise((resolve) => {
                 resolve(axiosInstance(error.config))
@@ -96,7 +97,7 @@ describe('User details - Profile check via Token', function () {
             isLoginSucceed(response.data).valid.should.equal(true)
             axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`
         }).catch(error => {
-            console.error(`POST Error - Token retrieval: ${error}`)
+            logger.error(`POST Error - Token retrieval: ${error}`)
             throw error
         })
     })
@@ -109,7 +110,7 @@ describe('User details - Profile check via Token', function () {
             response.data.firstName.should.equal(userDetails.data.firstName)
             response.data.lastName.should.equal(userDetails.data.lastName)
         }).catch(error => {
-            console.error(`GET Error - User profile: ${error}`)
+            logger.error(`GET Error - User profile: ${error}`)
             throw error
         })
     })
@@ -127,15 +128,15 @@ describe('Smart devices - Smartphone, Watch, etc.', function () {
 
     axiosInstance.interceptors.request.use(function (config) {
         if (config.method == 'post') {
-            console.log(`Post request: ${JSON.stringify(config.data)}`)
+            logger.info(`Post request: ${JSON.stringify(config.data)}`)
         }
         return config
     }, function (error) {
         return Promise.reject(error)
     })
     axiosInstance.interceptors.response.use(function (response) {
-        if (response.request.method == 'delete') {
-            console.log(`Delete response: ${JSON.stringify(response.data)}`)
+        if (response.config.method == 'delete') {
+            logger.info(`Delete response: ${JSON.stringify(response.data)}`)
         }
         return response
     }, function (error) {
@@ -151,7 +152,7 @@ describe('Smart devices - Smartphone, Watch, etc.', function () {
             response.data.data.should.deep.equal(deviceToPublish.data)
             response.data.createdAt.split('T')[0].should.equal(new Date().toISOString().split('T')[0])
         }).catch((error) => {
-            console.error(`Test data setup failed - Publish device: ${error}`)
+            logger.error(`Test data setup failed - Publish device: ${error}`)
             throw error
         })
     })
@@ -166,7 +167,7 @@ describe('Smart devices - Smartphone, Watch, etc.', function () {
             response.data.name.should.equal(deviceName)
             response.data.data.colour.should.equal(Colour.Red)
         }).catch((error) => {
-            console.error(`PATCH Error - Update device: ${error}`)
+            logger.error(`PATCH Error - Update device: ${error}`)
             throw error
         })
     })
@@ -178,7 +179,7 @@ describe('Smart devices - Smartphone, Watch, etc.', function () {
             response.data.should.have.property('error')
             response.data.error.should.equal(`Oject with id=${invalidId} was not found.`)
         }).catch(error => {
-            console.error(`GET Error - Invalid device id: ${error}`)
+            logger.error(`GET Error - Invalid device id: ${error}`)
             throw error
         })
     })
@@ -189,7 +190,7 @@ describe('Smart devices - Smartphone, Watch, etc.', function () {
             response.data.should.have.property('message')
             response.data.message.should.equal(`Object with id = ${deviceId} has been deleted.`)
         }).catch(error => {
-            console.error(`DELETE Error - Remove device: ${error}`)
+            logger.error(`DELETE Error - Remove device: ${error}`)
             throw error
         })
     })
