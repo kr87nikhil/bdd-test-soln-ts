@@ -2,6 +2,8 @@ import axios from 'axios'
 import type { AxiosResponse, CreateAxiosDefaults } from 'axios'
 // import { config } from 'dotenv'
 import { expect, should } from 'chai'
+import { validate } from '@hyperjump/json-schema/draft-2020-12'
+import { UserType } from '../src/user.js'
 import { Colour } from '../src/smartDevice.js'
 import type { ProductType } from '../src/product.js'
 
@@ -47,6 +49,69 @@ describe('Product details - Smartphone category', function () {
         Array.prototype.forEach((product: ProductType) => {
             expect(expectedProducts).to.deep.include(product)
         }, categoryResponse.data.products)
+    })
+})
+
+describe('User details - Profile check via Token', function () {
+    let retryCounter = 1, userDetails: AxiosResponse<UserType>
+    const axiosConfig: CreateAxiosDefaults = {
+        baseURL: config.thirdPartyApplication.dummyJSON,
+        validateStatus: function (status) {
+            // Bypass validation status for expired Bearer token
+            return status >= 200 && status < 300 || status == 401
+        }
+    }
+    const axiosInstance = axios.create(axiosConfig)
+
+    // Refresh Bearer token once expired
+    axiosInstance.interceptors.response.use(null, async function (error) {
+        if (retryCounter < 3 && error.response.status === 401) {
+            retryCounter++
+            await axiosInstance.post('/auth/refresh', {
+                expiresInMins: 1
+            }).then(response => {
+                if (response.status == 401) {
+                    // Open Bug: Unable refresh token with provided expired token: https://dummyjson.com/docs/auth
+                    throw new Error('Token refresh failed with 401 status')
+                }
+                axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`
+            }).catch(error => {
+                console.error(`Unable to refresh token: ${error}`)
+            })
+            return new Promise((resolve) => {
+                resolve(axiosInstance(error.config))
+            })
+        }
+        Promise.reject(error)
+    })
+
+    before(async () => {
+        let isLoginSucceed = await validate('./src/fixtures/user.schema.json')
+        userDetails = await axiosInstance.get('/users/1')
+        await axiosInstance.post('/auth/login', {
+            username: userDetails.data.username,
+            password: userDetails.data.password,
+            expiresInMins: 1
+        }).then(async response => {
+            isLoginSucceed(response.data).valid.should.equal(true)
+            axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`
+        }).catch(error => {
+            console.error(`POST Error - Token retrieval: ${error}`)
+            throw error
+        })
+    })
+
+    it('Validate details received map with received token', async () => {
+        await axiosInstance.get('/auth/me').then(response => {
+            response.status.should.equal(200)
+            response.data.id.should.equal(userDetails.data.id)
+            response.data.age.should.equal(userDetails.data.age)
+            response.data.firstName.should.equal(userDetails.data.firstName)
+            response.data.lastName.should.equal(userDetails.data.lastName)
+        }).catch(error => {
+            console.error(`GET Error - User profile: ${error}`)
+            throw error
+        })
     })
 })
 

@@ -1,0 +1,46 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "User",
+    "description": "A user in the catalog, for which token is retrieved",
+    "type": "object",
+    "properties": {
+        "id": {
+            "description": "The unique identifier for a user.",
+            "type": "integer",
+            "exclusiveMinimum": 0
+        },
+        "username": {
+            "description": "The unique name for a user, 1-1 mapping with id.",
+            "type": "string"
+        },
+        "email": {
+            "description": "The email address for a user.",
+            "type": "string",
+            "format": "email"
+        },
+        "firstName": {
+            "description": "The first name of a user",
+            "type": "string"
+        },
+        "lastName": {
+            "description": "The last name of a user",
+            "type": "string"
+        },
+        "gender": {
+            "description": "The social, psychological, cultural and behavioral aspects of being a man, woman, or other gender identity",
+            "type": "string",
+            "enum": ["male", "female", "others"]
+        },
+        "image": {
+            "description": "The profile photo of a user",
+            "type": "string",
+            "format": "uri"
+        },
+        "token": {
+            "description": "Authorization bearer token for a user session",
+            "type": "string",
+            "pattern": "^[A-Za-z0-9-_]+\\.[A-Za-z0-9-_]+\\.[A-Za-z0-9-_]*$"
+        }
+    },
+    "required": ["id", "username", "email", "firstName", "lastName", "gender", "image", "token"]
+}
