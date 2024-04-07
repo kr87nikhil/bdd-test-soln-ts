@@ -1,19 +1,20 @@
 import axios from 'axios'
 import type { AxiosResponse, CreateAxiosDefaults } from 'axios'
-import { config } from 'dotenv'
+// import { config } from 'dotenv'
 import { expect, should } from 'chai'
 import { Colour } from '../src/smartDevice.js'
 import type { ProductType } from '../src/product.js'
 
 should()
-config({ path: `./config/.env.${process.env.NODE_ENV || 'integ'}` })
+// config({ path: `./config/.env.${process.env.NODE_ENV || 'integ'}` })
+import config from '../config.js'
 import sampleProducts from '../src/fixtures/products.json' with { type: 'json' }
 
 
 // Each describe() block represent a test-suite
 describe('Product details - Smartphone category', function () {
     let categoryResponse: AxiosResponse
-    const basePath = 'https://dummyjson.com'
+    const basePath = config.thirdPartyApplication.dummyJSON
     const expectedProducts: ProductType[] = [
         { title: 'iPhone 9', price: 549 },
         { title: 'iPhone X', price: 899 },
@@ -52,7 +53,7 @@ describe('Product details - Smartphone category', function () {
 describe('Smart devices - Smartphone, Watch, etc.', function () {
     let deviceId: number | string
     const axiosConfig: CreateAxiosDefaults = {
-        baseURL: process.env.BASE_URL,
+        baseURL: config.thirdPartyApplication.RestfulAPI,
         validateStatus: status => {
             return status >= 200 && status < 300 || status > 400 && status < 500
         }
@@ -100,7 +101,7 @@ describe('Smart devices - Smartphone, Watch, etc.', function () {
             response.data.name.should.equal(deviceName)
             response.data.data.colour.should.equal(Colour.Red)
         }).catch((error) => {
-            console.error(`API Error - Patch device: ${error}`)
+            console.error(`PATCH Error - Update device: ${error}`)
             throw error
         })
     })
@@ -112,7 +113,7 @@ describe('Smart devices - Smartphone, Watch, etc.', function () {
             response.data.should.have.property('error')
             response.data.error.should.equal(`Oject with id=${invalidId} was not found.`)
         }).catch(error => {
-            console.error(`API Error - Invalid device id: ${error}`)
+            console.error(`GET Error - Invalid device id: ${error}`)
             throw error
         })
     })
@@ -123,7 +124,7 @@ describe('Smart devices - Smartphone, Watch, etc.', function () {
             response.data.should.have.property('message')
             response.data.message.should.equal(`Object with id = ${deviceId} has been deleted.`)
         }).catch(error => {
-            console.error(`API Error - Delete device: ${error}`)
+            console.error(`DELETE Error - Remove device: ${error}`)
             throw error
         })
     })

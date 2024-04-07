@@ -12,7 +12,7 @@
                 "--colors",
                 "--no-timeout",
                 "--recursive",
-                "${workspaceRoot}/test/**/*.spec.ts"
+                "${workspaceRoot}/spec/**/*.spec.ts"
             ],
             "env": {
                 "NODE_OPTIONS": "--loader ts-node/esm"
