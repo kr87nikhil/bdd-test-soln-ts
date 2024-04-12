@@ -5,7 +5,7 @@
   "exports": "./index.ts",
   "scripts": {
     "lint": "eslint src test --ext .ts",
-    "test": "mocha -u bdd --colors --reporter mochawesome --reporter-options html=false dist/test/smartphone.spec.js",
+    "test": "mocha -u bdd --colors --reporter mochawesome --reporter-options html=false dist/spec/smartphone.spec.js",
     "report": "marge -f [datetime]-[name]-report --timestamp mediumDate --charts true --no-code mochawesome-report/*.json"
   },
   "type": "module",
