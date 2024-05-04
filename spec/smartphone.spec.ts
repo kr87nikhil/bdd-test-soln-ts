@@ -10,8 +10,8 @@ import type { ProductType } from '../src/product.js'
 should()
 // config({ path: `./config/.env.${process.env.NODE_ENV || 'integ'}` })
 import config from '../config.js'
-import logger from '../logger.js'
-import sampleProducts from '../src/fixtures/products.json' with { type: 'json' }
+import logger from '../winston.logger.js'
+import sampleProducts from '../spec/fixtures/products.json' with { type: 'json' }
 
 
 // Each describe() block represent a test-suite
