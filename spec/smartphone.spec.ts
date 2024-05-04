@@ -15,7 +15,7 @@ import sampleProducts from '../src/fixtures/products.json' with { type: 'json' }
 
 
 // Each describe() block represent a test-suite
-describe('Product details - Smartphone category', function () {
+describe('example smartphone product', function () {
     let categoryResponse: AxiosResponse
     const basePath = config.thirdPartyApplication.dummyJSON
     const expectedProducts: ProductType[] = [
@@ -24,7 +24,7 @@ describe('Product details - Smartphone category', function () {
         { title: 'Samsung Universe 9', price: 1249 }
     ]
 
-    before('Get smartphone details', async function () {
+    before('can fetch all smartphone information', async function () {
         categoryResponse = await axios.get(basePath + '/products/category/smartphones', {
             params: {
                 limit: 3,
@@ -34,26 +34,26 @@ describe('Product details - Smartphone category', function () {
     })
 
     // Each it() block represent a test-case
-    it('Validate status code', () => {
+    it('provides success response', () => {
         expect(categoryResponse.status).to.equal(200)
     })
 
-    it('Validate number of records', () => {
+    it('displays three smartphone\'s by default', () => {
         categoryResponse.data.should.have.property('products').with.lengthOf(3)
     })
 
-    it('Validate category of returned product', () => {
+    it('can filter product by category', () => {
         Array.prototype.every.call(categoryResponse.data.products, x => x.category === 'smartphones').should.be.true
     })
 
-    it('Validate product details based on fields selected', () => {
+    it('displays listed smartphone\'s information', () => {
         Array.prototype.forEach((product: ProductType) => {
             expect(expectedProducts).to.deep.include(product)
         }, categoryResponse.data.products)
     })
 })
 
-describe('User details - Profile check via Token', function () {
+describe('example user profile', function () {
     let retryCounter = 1, userDetails: AxiosResponse<UserType>
     const axiosConfig: CreateAxiosDefaults = {
         baseURL: config.thirdPartyApplication.dummyJSON,
@@ -86,7 +86,7 @@ describe('User details - Profile check via Token', function () {
         Promise.reject(error)
     })
 
-    before(async () => {
+    before('can create user session', async () => {
         let isLoginSucceed = await validate('./src/fixtures/user.schema.json')
         userDetails = await axiosInstance.get('/users/1')
         await axiosInstance.post('/auth/login', {
@@ -102,7 +102,7 @@ describe('User details - Profile check via Token', function () {
         })
     })
 
-    it('Validate details received map with received token', async () => {
+    it('can get current user information', async () => {
         await axiosInstance.get('/auth/me').then(response => {
             response.status.should.equal(200)
             response.data.id.should.equal(userDetails.data.id)
@@ -116,7 +116,7 @@ describe('User details - Profile check via Token', function () {
     })
 })
 
-describe('Smart devices - Smartphone, Watch, etc.', function () {
+describe('example smart device', function () {
     let deviceId: number | string
     const axiosConfig: CreateAxiosDefaults = {
         baseURL: config.thirdPartyApplication.RestfulAPI,
@@ -143,7 +143,7 @@ describe('Smart devices - Smartphone, Watch, etc.', function () {
         return Promise.reject(error)
     })
 
-    before(async () => {
+    before('can publish device', async () => {
         const deviceToPublish = sampleProducts[Math.floor(Math.random() * sampleProducts.length)]
         await axiosInstance.post('/objects', deviceToPublish).then((response) => {
             response.status.should.equal(200)
@@ -157,7 +157,7 @@ describe('Smart devices - Smartphone, Watch, etc.', function () {
         })
     })
 
-    it('Update name of existing Device', async () => {
+    it('can update name & colour of a device', async () => {
         const deviceName = 'Motorola Razor+, 128 GB, RAM 6 GB'
         await axiosInstance.patch('/objects/' + deviceId, {
             name: deviceName,
@@ -172,7 +172,7 @@ describe('Smart devices - Smartphone, Watch, etc.', function () {
         })
     })
 
-    it('Validate device details for non-published records', async () => {
+    it('return error if accessing non-published device', async () => {
         const invalidId = 16
         await axiosInstance.get('/objects/' + invalidId).then(response => {
             response.status.should.equal(404)
@@ -184,7 +184,7 @@ describe('Smart devices - Smartphone, Watch, etc.', function () {
         })
     })
 
-    it('Delete existing device, validate it not available', async () => {
+    it('can delete device', async () => {
         await axiosInstance.delete('/objects/' + deviceId).then((response) => {
             response.status.should.equal(200)
             response.data.should.have.property('message')
