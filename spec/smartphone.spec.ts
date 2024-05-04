@@ -11,7 +11,7 @@ should()
 // config({ path: `./config/.env.${process.env.NODE_ENV || 'integ'}` })
 import config from '../config.js'
 import logger from '../winston.logger.js'
-import sampleProducts from '../spec/fixtures/products.json' with { type: 'json' }
+import sampleProducts from './fixtures/products.json' with { type: 'json' }
 
 
 // Each describe() block represent a test-suite
@@ -87,7 +87,7 @@ describe('example user profile', function () {
     })
 
     before('can create user session', async () => {
-        let isLoginSucceed = await validate('./src/fixtures/user.schema.json')
+        let isLoginSucceed = await validate('./spec/fixtures/user.schema.json')
         userDetails = await axiosInstance.get('/users/1')
         await axiosInstance.post('/auth/login', {
             username: userDetails.data.username,
