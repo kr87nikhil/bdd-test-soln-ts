@@ -9,9 +9,9 @@ import type { ProductType } from '../src/product.js'
 
 should()
 // config({ path: `./config/.env.${process.env.NODE_ENV || 'integ'}` })
-import config from '../config.js'
-import logger from '../winston.logger.js'
-import sampleProducts from './fixtures/products.json' with { type: 'json' }
+import config from '../../config.js'
+import logger from '../../winston.logger.js'
+import sampleProducts from '../fixtures/products.json' with { type: 'json' }
 
 
 // Each describe() block represent a test-suite
@@ -87,7 +87,7 @@ describe('example user profile', function () {
     })
 
     before('can create user session', async () => {
-        let isLoginSucceed = await validate('./spec/fixtures/user.schema.json')
+        const isLoginSucceed = await validate('./spec/fixtures/user.schema.json')
         userDetails = await axiosInstance.get('/users/1')
         await axiosInstance.post('/auth/login', {
             username: userDetails.data.username,
@@ -119,7 +119,7 @@ describe('example user profile', function () {
 describe('example smart device', function () {
     let deviceId: number | string
     const axiosConfig: CreateAxiosDefaults = {
-        baseURL: config.thirdPartyApplication.RestfulAPI,
+        baseURL: config.thirdPartyApplication.restfulAPI,
         validateStatus: status => {
             return status >= 200 && status < 300 || status > 400 && status < 500
         }
