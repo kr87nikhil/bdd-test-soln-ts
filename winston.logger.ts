@@ -1,4 +1,4 @@
-import winston from 'winston';
+import winston from 'winston'
 
 // Create a logger instance
 const logger = winston.createLogger({
