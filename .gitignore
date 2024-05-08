@@ -144,3 +144,8 @@ dist
 
 # Mochawesome report
 mochawesome-report/
+mochawesome-cy-report/
+
+# Cypress E2E
+cypress/screenshots/
+cypress/downloads/
