@@ -149,3 +149,4 @@ mochawesome-cy-report/
 # Cypress E2E
 cypress/screenshots/
 cypress/downloads/
+cypress/results/
