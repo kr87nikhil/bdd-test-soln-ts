@@ -4,14 +4,18 @@
   "description": "TypeScript solution for Test Automation",
   "exports": "./index.ts",
   "scripts": {
-    "cypress:open": "cypress open",
-    "lint": "eslint src test --ext .ts",
-    "test": "mocha -u bdd --colors --reporter mochawesome --reporter-options html=false dist/spec/smartphone.spec.js",
-    "report:html": "marge -f [datetime]-[name]-report --timestamp mediumDate --charts true --no-code mochawesome-report/*.json"
+    "cy:lint": "eslint cypress --ext .ts",
+    "cy:run": "cypress run --reporter mochawesome --reporter-options consoleReporter=none,html=false,reportDir=cypress/results/json/,reportFilename=[datetime]-[name]-report,timestamp=shortDate",
+    "cy:merge:json": "mochawesome-merge cypress/results/json/*.json > cypress/results/cy-demo-mochawesome.json",
+    "cy:report:html": "marge -t Demo-Cypress -f [datetime]-cy-demo-report --ts shortDate -o cypress/results/ --no-code cypress/results/cy-demo-mochawesome.json",
+    "axios:lint": "eslint web-service --ext .ts",
+    "axios:run": "mocha -u bdd --colors --reporter mochawesome --require mochawesome/register --reporter-options html=false,reportFilename=[datetime]-smartphone-report,timestamp=mediumDate dist/spec/smartphone.spec.js",
+    "axios:report:html": "marge -t Demo-Axios -f [datetime]-[name]-report --ts mediumDate --charts true --no-code mochawesome-report/*.json"
   },
   "type": "module",
   "keywords": [
     "API",
+    "Web App",
     "BDD Test",
     "Automation solution"
   ],
@@ -25,11 +29,13 @@
     "dotenv": "^16.4.5",
     "mocha": "^10.3.0",
     "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.3.0",
     "mochawesome-report-generator": "^6.2.0",
     "winston": "^3.13.0"
   },
   "devDependencies": {
     "@types/chai": "^4.3.14",
+    "@types/cypress": "^1.1.3",
     "@types/mocha": "^10.0.6",
     "@types/mochawesome": "^6.2.4",
     "@types/node": "^20.11.30",
