@@ -1,8 +1,9 @@
-const config = {
+const projectConfig = {
     thirdPartyApplication: {
         dummyJSON: 'https://dummyjson.com',
-        RestfulAPI: 'https://api.restful-api.dev'
+        restfulAPI: 'https://api.restful-api.dev',
+        sauceDemoSwagLabs: 'https://www.saucedemo.com'
     }
 }
 
-export default config
+export default projectConfig

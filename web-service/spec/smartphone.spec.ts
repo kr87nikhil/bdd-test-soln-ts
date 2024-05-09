@@ -9,7 +9,7 @@ import type { ProductType } from '../src/product.js'
 
 should()
 // config({ path: `./config/.env.${process.env.NODE_ENV || 'integ'}` })
-import config from '../../config.js'
+import projectConfig from '../../config.js'
 import logger from '../../winston.logger.js'
 import sampleProducts from '../fixtures/products.json' with { type: 'json' }
 
@@ -17,7 +17,7 @@ import sampleProducts from '../fixtures/products.json' with { type: 'json' }
 // Each describe() block represent a test-suite
 describe('example smartphone product', function () {
     let categoryResponse: AxiosResponse
-    const basePath = config.thirdPartyApplication.dummyJSON
+    const basePath = projectConfig.thirdPartyApplication.dummyJSON
     const expectedProducts: ProductType[] = [
         { title: 'iPhone 9', price: 549 },
         { title: 'iPhone X', price: 899 },
@@ -56,7 +56,7 @@ describe('example smartphone product', function () {
 describe('example user profile', function () {
     let retryCounter = 1, userDetails: AxiosResponse<UserType>
     const axiosConfig: CreateAxiosDefaults = {
-        baseURL: config.thirdPartyApplication.dummyJSON,
+        baseURL: projectConfig.thirdPartyApplication.dummyJSON,
         validateStatus: function (status) {
             // Bypass validation status for expired Bearer token
             return status >= 200 && status < 300 || status == 401
@@ -119,7 +119,7 @@ describe('example user profile', function () {
 describe('example smart device', function () {
     let deviceId: number | string
     const axiosConfig: CreateAxiosDefaults = {
-        baseURL: config.thirdPartyApplication.restfulAPI,
+        baseURL: projectConfig.thirdPartyApplication.restfulAPI,
         validateStatus: status => {
             return status >= 200 && status < 300 || status > 400 && status < 500
         }
