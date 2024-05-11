@@ -3,9 +3,9 @@ import type { AxiosResponse, CreateAxiosDefaults } from 'axios'
 // import { config } from 'dotenv'
 import { expect, should } from 'chai'
 import { validate } from '@hyperjump/json-schema/draft-2020-12'
-import { UserType } from '../src/user.js'
-import { Colour } from '../src/smartDevice.js'
-import type { ProductType } from '../src/product.js'
+import { UserType } from '../types/user.js'
+import { Colour } from '../types/smartDevice.js'
+import type { ProductType } from '../types/product.js'
 
 should()
 // config({ path: `./config/.env.${process.env.NODE_ENV || 'integ'}` })
@@ -17,7 +17,7 @@ import sampleProducts from '../fixtures/products.json' with { type: 'json' }
 // Each describe() block represent a test-suite
 describe('example smartphone product', function () {
     let categoryResponse: AxiosResponse
-    const basePath = projectConfig.thirdPartyApplication.dummyJSON
+    const basePath = projectConfig.thirdPartyApplication.dummyJson
     const expectedProducts: ProductType[] = [
         { title: 'iPhone 9', price: 549 },
         { title: 'iPhone X', price: 899 },
@@ -56,7 +56,7 @@ describe('example smartphone product', function () {
 describe('example user profile', function () {
     let retryCounter = 1, userDetails: AxiosResponse<UserType>
     const axiosConfig: CreateAxiosDefaults = {
-        baseURL: projectConfig.thirdPartyApplication.dummyJSON,
+        baseURL: projectConfig.thirdPartyApplication.dummyJson,
         validateStatus: function (status) {
             // Bypass validation status for expired Bearer token
             return status >= 200 && status < 300 || status == 401

@@ -1,6 +1,7 @@
 const projectConfig = {
     thirdPartyApplication: {
-        dummyJSON: 'https://dummyjson.com',
+        dummyJson: 'https://dummyjson.com',
+        demoQa: 'https://demoqa.com/',
         restfulAPI: 'https://api.restful-api.dev',
         sauceDemoSwagLabs: 'https://www.saucedemo.com'
     }
