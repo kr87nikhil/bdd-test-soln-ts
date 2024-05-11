@@ -1,17 +1,16 @@
 /// <reference types="cypress" />
 // Getting started guide: https://on.cypress.io/introduction-to-cypress
-// import config from '../../config.js'
 
 describe('demo swag labs', { testIsolation: false }, () => {
     before('can login as regular user', () => {
-        cy.swagLabsLoginViaUi(Cypress.env('username'))
+        cy.swagLabsLoginViaUi(Cypress.env('swagLabsRegularUser'))
     })
 
-    // beforeEach('can navigate to inventory page', () => {
-    //     cy.visit('/inventory.html')
-    // })
+    beforeEach('can redirect to inventory page', () => {
+        cy.url().should('contain', '/inventory.html')
+    })
 
-    it.only('display page title', () => {
+    it('display page title', () => {
         cy.get('div[data-test=primary-header] .app_logo').should('have.text', 'Swag Labs')
     })
 
@@ -67,8 +66,14 @@ describe('demo swag labs', { testIsolation: false }, () => {
         cy.contains('Finish').click()
     })
 
+    afterEach('can navigate back to inventory page', () => {
+        cy.contains('Open Menu').click()
+        cy.get('a[data-test=reset-sidebar-link]').click()
+        cy.get('a[data-test=inventory-sidebar-link]').click()
+    })
+
     after('can perform logout', () => {
-        cy.get('#react-burger-menu-btn').click()
-        cy.get('[data-test=logout-sidebar-link]').click()
+        cy.contains('Open Menu').click()
+        cy.get('a[data-test=logout-sidebar-link]').click()
     })
 })

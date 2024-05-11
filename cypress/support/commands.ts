@@ -13,7 +13,7 @@
 // -- This is a parent command --
 Cypress.Commands.add('swagLabsLoginViaUi', (username: string) => {
     cy.session(username, function () {
-        cy.visit('/')
+        cy.visit(Cypress.env('swagLabsWebUrl'))
         cy.get('input[data-test=username]').type(username)
         cy.get('div[data-test=login-password]').invoke('text').then(passwordDivText => {
             cy.get('input[data-test=password]').type(passwordDivText.split(':')[1], { log: false })

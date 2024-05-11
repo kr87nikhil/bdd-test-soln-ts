@@ -3,9 +3,10 @@ import projectConfig from "./config.js"
 
 export default defineConfig({
   e2e: {
-    baseUrl: projectConfig.thirdPartyApplication.sauceDemoSwagLabs,
+    baseUrl: projectConfig.thirdPartyApplication.demoQa,
     env: {
-      'username': 'standard_user'
+      'swagLabsRegularUser': 'standard_user',
+      'swagLabsWebUrl': projectConfig.thirdPartyApplication.sauceDemoSwagLabs
     },
     reporter: 'junit',
     reporterOptions: {
