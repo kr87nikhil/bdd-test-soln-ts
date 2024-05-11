@@ -11,22 +11,21 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
 Cypress.Commands.add('swagLabsLoginViaUi', (username: string) => {
-    // cy.session(username, () => {
+    cy.session(username, function () {
         cy.visit('/')
         cy.get('input[data-test=username]').type(username)
         cy.get('div[data-test=login-password]').invoke('text').then(passwordDivText => {
             cy.get('input[data-test=password]').type(passwordDivText.split(':')[1], { log: false })
         })
         cy.get('input[data-test=login-button]').click()
-    // }, {
-    //     validate: () => {
-    //         cy.getCookie('session-username').should('exist')
-    //         cy.url().should('contain', '/inventory.html')
-    //     }
-    // })
+    }, {
+        validate: () => {
+            cy.getCookie('session-username').should(cookie => 
+                expect(cookie?.value).be.eq(username)
+            )
+        }
+    })
 })
 
 Cypress.Commands.add('swagLabsPerformCheckout', () => {
@@ -64,7 +63,6 @@ declare global {
         swagLabsLoginViaUi(username: string): Chainable<void>
         swagLabsPerformCheckout(): Chainable<void>
         swagLabsFillCheckoutInfo(firstName: string, lastName: string, zipCode: string): Chainable<void>
-//       login(email: string, password: string): Chainable<void>
 //       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
 //       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
 //       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
