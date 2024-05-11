@@ -2,8 +2,7 @@
     "books": [
         {
             "isbn": "9780747532744",
-            "title": "Harry Potter and the Philosopher's Stone",
-            "subTitle": "",
+            "title": "Philosopher's Stone",
             "author": "J.K. Rowling",
             "publish_date": "1997-06-26",
             "publisher": "Bloomsbury Publishing",
@@ -13,8 +12,7 @@
         },
         {
             "isbn": "9780747538492",
-            "title": "Harry Potter and the Chamber of Secrets",
-            "subTitle": "",
+            "title": "Chamber of Secrets",
             "author": "J.K. Rowling",
             "publish_date": "1998-07-02",
             "publisher": "Bloomsbury Publishing",
@@ -24,8 +22,7 @@
         },
         {
             "isbn": "9780747546191",
-            "title": "Harry Potter and the Prisoner of Azkaban",
-            "subTitle": "",
+            "title": "Prisoner of Azkaban",
             "author": "J.K. Rowling",
             "publish_date": "1999-07-08",
             "publisher": "Bloomsbury Publishing",
@@ -35,8 +32,7 @@
         },
         {
             "isbn": "9780747542429",
-            "title": "Harry Potter and the Goblet of Fire",
-            "subTitle": "",
+            "title": "Goblet of Fire",
             "author": "J.K. Rowling",
             "publish_date": "2000-07-08",
             "publisher": "Bloomsbury Publishing",
@@ -46,8 +42,7 @@
         },
         {
             "isbn": "9780747551061",
-            "title": "Harry Potter and the Order of the Phoenix",
-            "subTitle": "",
+            "title": "Order of the Phoenix",
             "author": "J.K. Rowling",
             "publish_date": "2003-06-21",
             "publisher": "Bloomsbury Publishing",
@@ -57,8 +52,7 @@
         },
         {
             "isbn": "9780747582766",
-            "title": "Harry Potter and the Half-Blood Prince",
-            "subTitle": "",
+            "title": "Half-Blood Prince",
             "author": "J.K. Rowling",
             "publish_date": "2005-07-16",
             "publisher": "Bloomsbury Publishing",
@@ -68,8 +62,7 @@
         },
         {
             "isbn": "9780747590901",
-            "title": "Harry Potter and the Deathly Hallows",
-            "subTitle": "",
+            "title": "Deathly Hallows",
             "author": "J.K. Rowling",
             "publish_date": "2007-07-21",
             "publisher": "Bloomsbury Publishing",
