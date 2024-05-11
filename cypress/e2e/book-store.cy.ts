@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-import { BookType } from "./types/book.js"
+import { BookType } from './types/book.js'
 // Getting started guide: https://on.cypress.io/introduction-to-cypress
 
 describe('demo tools QA', () => {
@@ -15,7 +15,7 @@ describe('demo tools QA', () => {
         cy.visit('/books')
         cy.wait('@getAvailableBooks').its('response.body.books').should('have.length', 7)
 
-        cy.on('uncaught:exception', (err, runnable) => {
+        cy.on('uncaught:exception', () => {
             // returning false here prevents Cypress from failing the test
             return false
         })
