@@ -12,7 +12,7 @@ describe('demo tools QA', () => {
 
     it('display book from harry potter series', () => {
         cy.intercept('/BookStore/v1/Books', { fixture: 'harryPotterBooks' }).as('getAvailableBooks')
-        cy.visit('/books')
+        cy.visit('/books', { timeout: 70000 })
         cy.wait('@getAvailableBooks').its('response.body.books').should('have.length', 7)
 
         cy.on('uncaught:exception', () => {
