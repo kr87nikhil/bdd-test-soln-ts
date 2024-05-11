@@ -1,0 +1,81 @@
+{
+    "books": [
+        {
+            "isbn": "9780747532744",
+            "title": "Harry Potter and the Philosopher's Stone",
+            "subTitle": "",
+            "author": "J.K. Rowling",
+            "publish_date": "1997-06-26",
+            "publisher": "Bloomsbury Publishing",
+            "pages": 309,
+            "description": "Harry Potter, a young boy living with his awful aunt, uncle, and cousin, discovers on his eleventh birthday that he is the orphaned son of two powerful wizards and possesses unique magical powers of his own. He is summoned from his life as an unwanted child by a mysterious stranger to become student at Hogwarts School of Witchcraft and Wizardry.",
+            "website": "https://www.bloomsbury.com/uk/harry-potter/the-classic-harry-potter-series/harry-potter-books-1-7/"
+        },
+        {
+            "isbn": "9780747538492",
+            "title": "Harry Potter and the Chamber of Secrets",
+            "subTitle": "",
+            "author": "J.K. Rowling",
+            "publish_date": "1998-07-02",
+            "publisher": "Bloomsbury Publishing",
+            "pages": 342,
+            "description": "For Harry Potter, life isn't much better than last year. There are whispers, essays, and annoying reminders of his parents' fate. Then, awful writing appears on the walls at Hogwarts: 'The Chamber of Secrets Has Been Opened. Enemies of the Heir, Beware.' Harry and his friends must unravel the mystery of a dangerous chamber and confront a terrifying legend.",
+            "website": "https://www.academia.edu/40801337/Bloomsbury_HP_2_Harry_Potter_and_the_Chamber_of_Secrets"
+        },
+        {
+            "isbn": "9780747546191",
+            "title": "Harry Potter and the Prisoner of Azkaban",
+            "subTitle": "",
+            "author": "J.K. Rowling",
+            "publish_date": "1999-07-08",
+            "publisher": "Bloomsbury Publishing",
+            "pages": 398,
+            "description": "It is a dark and stormy night at Hogwarts School of Witchcraft and Wizardry.  A shadowy figure, Sirius Black, has escaped from Azkaban, the wizard prison, and is heading straight for Harry Potter.  But why is Sirius Black after Harry?  And what secret connection does he have to Harry's parents?",
+            "website": "https://www.bloomsbury.com/uk/harry-potter-and-the-prisoner-of-azkaban-9781408855676/"
+        },
+        {
+            "isbn": "9780747542429",
+            "title": "Harry Potter and the Goblet of Fire",
+            "subTitle": "",
+            "author": "J.K. Rowling",
+            "publish_date": "2000-07-08",
+            "publisher": "Bloomsbury Publishing",
+            "pages": 672,
+            "description": "Harry Potter is back for his fourth year at Hogwarts School of Witchcraft and Wizardry. There is a sense of nervous excitement in the air, because this year Hogwarts is hosting the Triwizard Tournament, a competition between the three major European wizarding schools.  But amidst the wonder and anticipation, there is a dark secret lurking.",
+            "website": "https://www.academia.edu/40801340/Bloomsbury_HP_4_Harry_Potter_and_the_Goblet_of_Fire"
+        },
+        {
+            "isbn": "9780747551061",
+            "title": "Harry Potter and the Order of the Phoenix",
+            "subTitle": "",
+            "author": "J.K. Rowling",
+            "publish_date": "2003-06-21",
+            "publisher": "Bloomsbury Publishing",
+            "pages": 870,
+            "description": "At the start of the summer after his fourth year at Hogwarts, Harry Potter is unnerved by the fact that the Ministry of Magic is denying Lord Voldemort's return.  He is sure that Voldemort is out there and getting stronger, and he is worried that no one believes him.  Matters take a frightening turn when a group of dementors attack Harry and his cousin Dudley, and Harry is forced to use magic in front of a Muggle witness.",
+            "website": "https://www.academia.edu/40801341/Bloomsbury_HP_5_Harry_Potter_and_the_Order_of_the_Phoenix"
+        },
+        {
+            "isbn": "9780747582766",
+            "title": "Harry Potter and the Half-Blood Prince",
+            "subTitle": "",
+            "author": "J.K. Rowling",
+            "publish_date": "2005-07-16",
+            "publisher": "Bloomsbury Publishing",
+            "pages": 607,
+            "description": "Harry Potter is in his sixth year at Hogwarts School of Witchcraft and Wizardry. Lord Voldemort is exerting his grip on the wizarding world, and Hogwarts is no longer a safe haven.  Professor Dumbledore, determined to prepare Harry for the final battle that awaits him, leaves him on a dangerous mission to find a crucial Horcrux.  Meanwhile, Harry suspects there may be a dangerous secret hidden within the castle walls.",
+            "website": "https://www.bloomsbury.com/uk/harry-potter/the-classic-harry-potter-series/harry-potter-books-1-7/"
+        },
+        {
+            "isbn": "9780747590901",
+            "title": "Harry Potter and the Deathly Hallows",
+            "subTitle": "",
+            "author": "J.K. Rowling",
+            "publish_date": "2007-07-21",
+            "publisher": "Bloomsbury Publishing",
+            "pages": 607,
+            "description": "As he faces his eighteenth birthday, Harry Potter is no longer a student at Hogwarts School of Witchcraft and Wizardry. He is on the run, with his loyal friends Ron Weasley and Hermione Granger. They are hunting for Voldemort's remaining Horcruxes, the secrets of his immortality, but they are not alone. Death Eaters are searching for them, and Voldemort is determined to capture and kill Harry.  In the final battle of good versus evil, Harry must use all his courage and skill to defeat Voldemort.",
+            "website": "https://www.bloomsbury.com/uk/harry-potter/the-classic-harry-potter-series/harry-potter-books-1-7/"
+        }
+    ]
+}
