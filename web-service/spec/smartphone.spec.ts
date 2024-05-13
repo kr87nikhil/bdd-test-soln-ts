@@ -8,6 +8,8 @@ import { Colour } from '../types/smartDevice.js'
 import type { ProductType } from '../types/product.js'
 
 should()
+const USER_SCHEMA = './web-service/fixtures/user.schema.json'
+
 // config({ path: `./config/.env.${process.env.NODE_ENV || 'integ'}` })
 import projectConfig from '../../config.js'
 import logger from '../../winston.logger.js'
@@ -87,7 +89,7 @@ describe('example user profile', function () {
     })
 
     before('can create user session', async () => {
-        const isLoginSucceed = await validate('./spec/fixtures/user.schema.json')
+        const isLoginSucceed = await validate(USER_SCHEMA)
         userDetails = await axiosInstance.get('/users/1')
         await axiosInstance.post('/auth/login', {
             username: userDetails.data.username,
