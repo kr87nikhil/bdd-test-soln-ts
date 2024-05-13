@@ -3,7 +3,9 @@
 
 describe('demo swag labs', { testIsolation: false }, () => {
     before('can login as regular user', () => {
-        cy.swagLabsLoginViaUi(Cypress.env('swagLabsRegularUser'))
+        const user = Cypress.env('swagLabsRegularUser')
+        expect(user).to.be.a('string').and.not.be.empty
+        cy.swagLabsLoginViaUi(user)
     })
 
     beforeEach('can redirect to inventory page', () => {
