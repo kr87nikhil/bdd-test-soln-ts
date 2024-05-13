@@ -147,8 +147,9 @@ cypress/results/
 web-service/results/
 
 # Cypress E2E
-cypress/screenshots/
 cypress/downloads/
+cypress/screenshots/
+cypress/videos/
 
 # Local environment
 .as.a/
