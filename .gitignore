@@ -151,8 +151,5 @@ cypress/downloads/
 cypress/screenshots/
 cypress/videos/
 
-# Local environment
-.as.a/
-
 # MacOS files
 **/*.DS_Store
