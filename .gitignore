@@ -143,10 +143,15 @@ dist
 .pnp.*
 
 # Mochawesome report
-mochawesome-report/
-mochawesome-cy-report/
+cypress/results/
+web-service/results/
 
 # Cypress E2E
 cypress/screenshots/
 cypress/downloads/
-cypress/results/
+
+# Local environment
+.as.a/
+
+# MacOS files
+**/*.DS_Store
