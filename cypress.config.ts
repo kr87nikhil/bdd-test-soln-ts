@@ -8,15 +8,14 @@ export default defineConfig({
       'swagLabsRegularUser': 'standard_user',
       'swagLabsWebUrl': projectConfig.thirdPartyApplication.sauceDemoSwagLabs
     },
-    reporter: 'junit',
+    reporter: 'cypress-multi-reporters',
     reporterOptions: {
-      mochaFile: 'cypress/results/test-results-[suiteFilename]-[hash].xml',
-      toConsole: true,
-      rootSuiteTitle: 'Demo-Cypress',
-      useFullSuiteTitle: true
+      configFile: 'cypress.reporter.config.json',
     },
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
+    viewportWidth: 1280,
+    viewportHeight: 720
   }
 })

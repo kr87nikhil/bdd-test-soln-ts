@@ -1,0 +1,17 @@
+{
+    "reporterEnabled": "spec, mocha-junit-reporter, mochawesome",
+    "mochaJunitReporterReporterOptions": {
+        "mochaFile": "cypress/results/xml/[suiteName] results.xml",
+        "testCaseSwitchClassnameAndName": true,
+        "testsuitesTitle": "Cypress Tests",
+        "rootSuiteTitle": "Suite",
+        "useFullSuiteTitle": true
+    },
+    "mochawesomeReporterOptions": {
+        "consoleReporter": "none",
+        "html": false,
+        "reportDir": "cypress/results/json/",
+        "reportFilename": "[datetime]-[name]-report",
+        "timestamp": "shortDate"
+    }
+}
