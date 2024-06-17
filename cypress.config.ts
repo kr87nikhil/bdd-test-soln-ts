@@ -8,6 +8,7 @@ export default defineConfig({
       'swagLabsRegularUser': 'standard_user',
       'swagLabsWebUrl': projectConfig.thirdPartyApplication.sauceDemoSwagLabs
     },
+    projectId: '11ex7v',
     reporter: 'cypress-multi-reporters',
     reporterOptions: {
       configFile: 'cypress.reporter.config.json',
