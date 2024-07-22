@@ -13,9 +13,11 @@ export default defineConfig({
     reporterOptions: {
       configFile: 'cypress/cypress.reporter.config.json',
     },
+    screenshotsFolder: 'cypress/results/screenshots',
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
+    videosFolder: 'cypress/results/videos',
     viewportWidth: 1280,
     viewportHeight: 720
   }

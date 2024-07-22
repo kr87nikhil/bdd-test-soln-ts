@@ -148,8 +148,6 @@ web-service/results/
 
 # Cypress E2E
 cypress/downloads/
-cypress/screenshots/
-cypress/videos/
 
 # MacOS files
 **/*.DS_Store
