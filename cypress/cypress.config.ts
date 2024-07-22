@@ -1,5 +1,5 @@
 import { defineConfig } from "cypress"
-import projectConfig from "./config.js"
+import projectConfig from "../config.js"
 
 export default defineConfig({
   e2e: {
@@ -11,7 +11,7 @@ export default defineConfig({
     projectId: '11ex7v',
     reporter: 'cypress-multi-reporters',
     reporterOptions: {
-      configFile: 'cypress.reporter.config.json',
+      configFile: 'cypress/cypress.reporter.config.json',
     },
     setupNodeEvents(on, config) {
       // implement node event listeners here

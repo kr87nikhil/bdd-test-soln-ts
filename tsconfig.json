@@ -107,7 +107,7 @@
     "skipLibCheck": true                              /* Skip type checking all .d.ts files. */
   },
   "include": [
-    "config.ts", "cypress.config.ts", "winston.logger.ts", 
+    "config.ts", "cypress/cypress.config.ts", "winston.logger.ts", 
     "*/fixtures/*.json",
     "web-service/types/**/*", "web-service/spec/**/*", "cypress/**/*"]
 }

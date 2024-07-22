@@ -4,7 +4,7 @@
   "description": "TypeScript solution for Test Automation",
   "scripts": {
     "cy:lint": "eslint cypress --ext .ts",
-    "cy:open": "cypress open --e2e --browser chrome",
+    "cy:open": "cypress open --config-file cypress/cypress.config.ts --e2e --browser chrome",
     "cy:test:local": "run-s cy:prerun cy:run cy:postrun",
     "cy:test:cloud": "as-a my-app run-s cy:prerun \"cy:run -- --tag staging --record\" cy:postrun",
     "cy:test:circleci": "DEBUG=cypress:server:record:ci-info TODO:Script",
@@ -13,7 +13,7 @@
     "axios:report:html": "marge -t Demo-Axios -f [datetime]-[name]-report --ts mediumDate -o web-service/results --charts true --no-code web-service/results/*.json",
     "-----------": "-----------",
     "cy:prerun": "rm -r cypress/results/* || true",
-    "cy:run": "cypress run --no-runner-ui --spec cypress/e2e/book-store.cy.ts,cypress/e2e/product_catalogue.cy.ts",
+    "cy:run": "cypress run --no-runner-ui -C cypress/cypress.config.ts --spec cypress/e2e/book-store.cy.ts,cypress/e2e/product_catalogue.cy.ts",
     "cy:postrun": "npm-run-all cy:report:combine:json -p cy:report:combine:xml cy:report:combine:html",
     "cy:report:combine:json": "mochawesome-merge cypress/results/json/*.json > cypress/results/cy-demo-mochawesome.json",
     "cy:report:combine:xml": "jrm cypress/results/cy-e2e-test-results.xml cypress/results/xml/*.xml",
